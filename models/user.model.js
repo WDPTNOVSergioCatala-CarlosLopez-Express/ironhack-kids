@@ -20,26 +20,31 @@ const schema = new mongoose.Schema(
             trim: true,    
         },
         password:{
-
+            type: String,
+            required: [true, "password is required"],
+            minLength: [8, "min length: 8"],
         },
         role: {
-            
+            type: String,
+            enum: ['teacher', 'strudent', 'parent'],
+            default: 'guest',
+            required: [true, "role is required"],
         },
         portfolio: {
-                
+            type: String,
         },
         linkedIn: {
-            
+            type: String,
         },
         /*curso?*/
         profilePic: {
-            
+            type: String,
         },
         grades: {
-
+            type: Array,
         },
         phoneNumber: {
-
+            type: Number,
         }
     }
 )
