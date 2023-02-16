@@ -10,6 +10,8 @@ require("./config/hbs.config");
 app.set("view engine", "hbs");
 app.set("views", `${__dirname}/views`);
 
+app.use(logger("dev"))
+
 const routes = require("./config/routes.config");
 app.use("/", routes);
 
