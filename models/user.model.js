@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const bcrypt = require("bcrypt")
 
 const schema = new mongoose.Schema({
   name: {
@@ -26,10 +27,11 @@ const schema = new mongoose.Schema({
   role: {
     type: String,
     enum: ["teacher", "student"],
-    required: [true, "role is required"],
+    //required: [true, "role is required"],
   },
   profilePic: {
     type: String,
+    required : true
   },
   phoneNumber: {
     type: Number,
@@ -39,6 +41,21 @@ const schema = new mongoose.Schema({
     unique: true,
   },
 });
+
+schema.pre("save", function (next) {
+  if (this.isModified("password")) {
+    bcrypt
+    .hash(this.password, 10)
+    .then((encryptedPassword) => {
+      this.password = encryptedPassword;
+      next();
+    })
+    .catch(next)
+  }else {
+    next();
+  }
+});
+
 module.exports = mongoose.model("User", schema);
 
 

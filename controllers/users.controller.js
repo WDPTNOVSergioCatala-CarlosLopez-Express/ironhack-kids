@@ -8,23 +8,27 @@ module.exports.create = (req, res) => {
 
 module.exports.doCreate = (req, res, next) => {
   function renderWithErrors(errors) {
-    res.render("users", { errors, user: req.body });
+    res.render("users/newUser", { errors, user: req.body });
   }
-
+  if (req.file) {
+    req.body.profilePic = req.file.path;
+  }
   delete req.body.role;
+
   User.findOne({ email: req.body.email })
     .then((user) => {
       if (user) {
         renderWithErrors({ email: "email already registered" });
-      } else if (req.body.code === TEACHER_CODE) {
-        req.body.role = 'teacher'
+      } else if (req.body.code === process.env.TEACHER_CODE) {
+        req.body.role = "teacher";
         return User.create(req.body).then(() => res.redirect("/login"));
       } else {
-        req.body.role = 'student'
+        req.body.role = "student";
         return User.create(req.body).then(() => res.redirect("/login"));
       }
     })
     .catch((error) => {
+      console.log(error);
       if (error instanceof mongoose.Error.ValidationError) {
         renderWithErrors(error.errors);
       } else {
@@ -33,6 +37,36 @@ module.exports.doCreate = (req, res, next) => {
     });
 };
 
+const sessions = {};
+
 module.exports.login = (req, res) => {
-    res.render('users/login');
-  };
+  res.render("users/login");
+};
+
+module.exports.doLogin = (req, res, next) => {
+  User.findOne({ email: req.body.email })
+    .then((user) => {
+      if (user) {
+        bcrypt
+          .compare(req.body.password, user.password)
+          .then((ok) => {
+            if (ok) {
+              req.session.userId = user.id;
+              res.redirect("/user");
+            } else {
+              const errors = {password: "Incorrect password"}
+              res.render("users/login", { errors, user: req.body })
+            }
+          })
+          .catch(next);
+      } else {
+        const errors = {email: "This email is not registered"};
+        res.render("users/login", { errors, user: req.body })
+      }
+    })
+    .catch(next);
+};
+
+module.exports.user = (req, res, next) => {
+  res.render("users/user");
+};

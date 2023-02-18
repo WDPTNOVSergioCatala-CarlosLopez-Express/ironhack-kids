@@ -6,7 +6,11 @@ const schema = new mongoose.Schema({
     type: String,
     required: [true, "message is required"],
   },
-  user: { type: Schema.Types.objectId, required: [true, "user is required"] },
+  user: { type: [{
+    type: Schema.Types.ObjectId,
+    ref: 'user'
+  }],
+  required: [true, "user is required"] },
 });
 
-module.exports = mongoosse.model("Message", schema);
+module.exports = mongoose.model("Message", schema);

@@ -6,13 +6,23 @@
   </div>
 {{/if}}
 
-<form action="/users" method="POST">
+<form action="/users" method="POST" enctype="multipart/form-data">
   <div class="mb-3">
     <label for="name" class="form-label">name</label>
     <input type="text" value="{{user.name}}" name="name" class="form-control {{#if errors.name}}is-invalid{{/if}}" id="name">
     {{#if errors.name}}
       <div class="invalid-feedback">
         {{errors.name.message}}
+      </div>
+    {{/if}}
+  </div>
+  
+  <div class="mb-3">
+    <label for="lastName" class="form-label">lastname</label>
+    <input type="text" value="{{user.lastName}}" name="lastName" class="form-control {{#if errors.lastName}}is-invalid{{/if}}" id="lastName">
+    {{#if errors.lastName}}
+      <div class="invalid-feedback">
+        {{errors.lastName.message}}
       </div>
     {{/if}}
   </div>
@@ -35,6 +45,31 @@
         {{errors.password.message}}
       </div>
     {{/if}}
+  </div>
+
+  <div class="mb-3">
+    <label for="code" class="form-label">register key</label>
+    <input type="text" value="{{code}}" name="code" class="form-control {{#if errors.code}}is-invalid{{/if}}" id="code">
+    {{#if errors.code}}
+      <div class="invalid-feedback">
+        {{errors.code.message}}
+      </div>
+    {{/if}}
+  </div>
+
+  <div class="mb-3">
+    <label for="personalID" class="form-label">Personal ID</label>
+    <input type="text" value="{{personalID}}" name="personalID" class="form-control {{#if errors.personalID}}is-invalid{{/if}}" id="personalID">
+    {{#if errors.personalID}}
+      <div class="invalid-feedback">
+        {{errors.personalID.message}}
+      </div>
+    {{/if}}
+  </div>
+
+  <div class="input-group mb-3">
+    <label class="input-group-text" for="profilePic"><i class="fa fa-picture-o"></i></label>
+    <input type="file" name="profilePic" class="form-control {{#if errors.profilePic}}is-invalid{{/if}}" id="profilePic">
   </div>
 
   

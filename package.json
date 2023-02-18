@@ -1,5 +1,5 @@
 {
-  "name": "ironhack-kids",
+  "name": "schoolmate",
   "version": "1.0.0",
   "description": "Module 2 Express Project for Ironhack Bootcamp",
   "main": "app.js",
@@ -9,16 +9,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/WDPTNOVSergioCatala-CarlosLopez-Express/ironhack-kids.git"
+    "url": "git+https://github.com/WDPTNOVSergioCatala-CarlosLopez-Express/schoolmate.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/WDPTNOVSergioCatala-CarlosLopez-Express/ironhack-kids/issues"
+    "url": "https://github.com/WDPTNOVSergioCatala-CarlosLopez-Express/schoolmate/issues"
   },
-  "homepage": "https://github.com/WDPTNOVSergioCatala-CarlosLopez-Express/ironhack-kids#readme",
+  "homepage": "https://github.com/WDPTNOVSergioCatala-CarlosLopez-Express/schoolmate#readme",
   "dependencies": {
     "bcrypt": "^5.1.0",
+    "cloudinary": "^1.34.0",
     "connect-mongo": "^4.6.0",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
@@ -26,7 +27,9 @@
     "hbs": "^4.2.0",
     "http-errors": "^2.0.0",
     "mongoose": "^6.9.1",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "multer-storage-cloudinary": "^4.0.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
