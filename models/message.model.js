@@ -9,4 +9,4 @@ const schema = new mongoose.Schema({
   user: { type: Schema.Types.objectId, required: [true, "user is required"] },
 });
 
-module.exports = mongoosse.model("PanelMessage", schema);
+module.exports = mongoosse.model("Message", schema);
