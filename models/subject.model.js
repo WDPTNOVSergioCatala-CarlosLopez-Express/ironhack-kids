@@ -11,9 +11,16 @@ const schema = new mongoose.Schema({
     required: [true, "teacher is required"],
   },
   students: {
-    type: Array,
-    required: [true, "student is required"],
+    type: [{
+      type: Schema.Types.ObjectId,
+      ref: 'user'
+    }],
+    validate: [arrayLimit, `${PATH} exceeds the limit of 40`]
   },
 });
+
+function arrayLimit(val) {
+  return val.length <= 40;
+}
 
 module.exports = mongoose.model("Subject", schema);
