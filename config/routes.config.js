@@ -21,4 +21,7 @@ router.get("/user", users.user);
 router.get("/messages", messages.create);
 router.post("messages", messages.doCreate);
 
+router.get("/aboutUs", common.aboutUS)
+
+
 module.exports = router;
