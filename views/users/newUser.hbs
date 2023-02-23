@@ -1,14 +1,27 @@
-<h1>Register</h1>
+<body style="font-family: 'Patrick Hand SC', cursive;">
+<style>
+  button.btn-primary {
+    background-color: grey;
+    border-color: grey;
+  }
+
+  button.btn-primary:hover {
+    background-color: rgba(234, 84, 85, 1);
+    border-color:rgba(234, 84, 85, 1) ;
+  }
+</style>
+
+<h1 >Registrate</h1>
 
 {{#if errors}}
   <div class="alert alert-danger">
-    review form data
+    Revisa el formulario.
   </div>
 {{/if}}
 
 <form action="/users" method="POST" enctype="multipart/form-data">
   <div class="mb-3">
-    <label for="name" class="form-label">name</label>
+    <label for="name" class="form-label">Nombre</label>
     <input type="text" value="{{user.name}}" name="name" class="form-control {{#if errors.name}}is-invalid{{/if}}" id="name">
     {{#if errors.name}}
       <div class="invalid-feedback">
@@ -18,7 +31,7 @@
   </div>
   
   <div class="mb-3">
-    <label for="lastName" class="form-label">lastname</label>
+    <label for="lastName" class="form-label">Apellido</label>
     <input type="text" value="{{user.lastName}}" name="lastName" class="form-control {{#if errors.lastName}}is-invalid{{/if}}" id="lastName">
     {{#if errors.lastName}}
       <div class="invalid-feedback">
@@ -28,7 +41,7 @@
   </div>
 
   <div class="mb-3">
-    <label for="email" class="form-label">email</label>
+    <label for="email" class="form-label">Email</label>
     <input type="email" value="{{user.email}}" name="email" class="form-control {{#if errors.email}}is-invalid{{/if}}" id="email">
     {{#if errors.email}}
       <div class="invalid-feedback">
@@ -38,7 +51,7 @@
   </div>
 
   <div class="mb-3">
-    <label for="password" class="form-label">password</label>
+    <label for="password" class="form-label">Contraseña</label>
     <input type="password" value="{{user.password}}" name="password" class="form-control {{#if errors.password}}is-invalid{{/if}}" id="password">
     {{#if errors.password}}
       <div class="invalid-feedback">
@@ -48,7 +61,7 @@
   </div>
 
   <div class="mb-3">
-    <label for="code" class="form-label">register key</label>
+    <label for="code" class="form-label">Clave de registro</label>
     <input type="text" value="{{code}}" name="code" class="form-control {{#if errors.code}}is-invalid{{/if}}" id="code">
     {{#if errors.code}}
       <div class="invalid-feedback">
@@ -73,5 +86,6 @@
   </div>
 
   
-  <button type="submit" class="btn btn-primary">Create</button>
-</form>
+  <button type="submit" class="btn btn-primary">Crear</button>
+</form>  
+</body>
