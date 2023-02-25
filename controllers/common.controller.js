@@ -4,3 +4,6 @@ module.exports.home = (req, res, next) => {
 module.exports.aboutUS = (req, res, next) => {
     res.render("aboutUs");
 };
+module.exports.lobby = (req, res, next) => {
+    res.render("lobby");
+};

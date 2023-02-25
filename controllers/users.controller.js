@@ -52,7 +52,7 @@ module.exports.doLogin = (req, res, next) => {
           .then((ok) => {
             if (ok) {
               req.session.userId = user.id;
-              res.redirect("/user");
+              res.redirect("/lobby");
             } else {
               const errors = {password: "Incorrect password"}
               res.render("users/login", { errors, user: req.body })
@@ -70,3 +70,21 @@ module.exports.doLogin = (req, res, next) => {
 module.exports.user = (req, res, next) => {
   res.render("users/user");
 };
+
+module.exports.logout = (req, res, next) => {
+  req.session.destroy(function(err) {
+    if (err) {
+      console.log(err);
+    }
+    res.redirect('/');
+  });
+};
+
+module.exports.edit = (req, res, next) => {
+  
+}
+
+
+
+
+

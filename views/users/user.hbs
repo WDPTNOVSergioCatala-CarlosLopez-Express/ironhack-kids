@@ -1,3 +1,100 @@
 <body style="font-family: 'Patrick Hand SC', cursive;">
-    <h1>Estas en el home de tu usuario</h1>
+    {{!--<h1>Perfil</h1>
+    <form action="/user/edit" method="post">
+        <button class="btn btn-danger" type="submit">Editar</button>
+    </form>
+    <img src="{{currentUser.profilePic}}" alt="" style="width: 15%">
+    <h3>Nombre: {{currentUser.name}}</h3>
+    <h3>Apellidos: {{currentUser.lastName}}</h3>
+    <h3>Email: {{currentUser.email}}</h3>
+    <h3>Número de telefono: {{currentUser.phoneNumber}}</h3>
+    <h3>DNI: {{currentUser.personalID}}</h3>--}}
+    <style>
+        body {
+        background: rgb(234, 84, 85, 255)
+    }
+
+    .form-control:focus {
+        box-shadow: none;
+        border-color: #BA68C8
+    }
+
+    .profile-button {
+        background: rgb(234, 84, 85, 255);
+        box-shadow: none;
+        border: none
+    }
+
+    .profile-button:hover {
+        background: rgb(234, 84, 85, 255)
+    }
+
+    .profile-button:focus {
+        background: rgb(234, 84, 85, 255);
+        box-shadow: none
+    }
+
+    .profile-button:active {
+        background: rgb(234, 84, 85, 255);
+        box-shadow: none
+    }
+
+    .back:hover {
+        color: rgb(234, 84, 85, 255);
+        cursor: pointer
+    }
+
+    .labels {
+        font-size: 11px
+    }
+
+    .add-experience:hover {
+        background: rgb(234, 84, 85, 255);
+        color: #fff;
+        cursor: pointer;
+        border: solid 1px rgb(234, 84, 85, 255)
+    } 
+    </style>
+
+    <div class="container rounded bg-white mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-3 border-right">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="{{currentUser.profilePic}}" alt="profile photo"><span class="font-weight-bold">{{currentUser.name}}</span><span class="text-black-50">{{currentUser.email}}</span><span> </span></div>
+        </div>
+        <div class="col-md-5 border-right">
+            <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="text-right">Perfil</h4>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-6"><label class="labels">Nombre</label><input type="text" class="form-control" placeholder="{{currentUser.name}}" value=""></div>
+                    <div class="col-md-6"><label class="labels">Apellidos</label><input type="text" class="form-control" value="" placeholder="{{currentUser.lastName}}"></div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-12"><label class="labels">Número de teléfono</label><input type="text" class="form-control" placeholder="{{#if currentUser.phoneNumber}}{{currentUser.phoneNumber}}{{else}}Introduce tu número de teléfono{{/if}} " value=""></div>
+                    <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control" placeholder="{{currentUser.email}}" value=""></div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-6"><label class="labels">DNI</label><input type="text" class="form-control" placeholder="{{currentUser.personalID}}" value=""></div>
+
+                </div>
+                <form action="/user/edit" method="post"></form>
+                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Guardar perfil</button></div>
+                </form>
+    
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center experience"><span>Role: {{currentUser.role}}</span><span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;Experience</span></div><br>
+                <div class="col-md-12"><label class="labels">Experience in Designing</label><input type="text" class="form-control" placeholder="experience" value=""></div> <br>
+                <div class="col-md-12"><label class="labels">Additional Details</label><input type="text" class="form-control" placeholder="additional details" value=""></div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+
 </body>

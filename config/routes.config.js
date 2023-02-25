@@ -1,6 +1,7 @@
 const express = require("express");
 
 const multer = require('../config/multer.config');
+const secure = require('../middlewares/secure.mid');
 const users = require("../controllers/users.controller");
 const common = require("../controllers/common.controller");
 const messages = require("../controllers/messages.controller");
@@ -16,12 +17,16 @@ router.post("/users", multer.single('profilePic'), users.doCreate);
 router.get("/login", users.login);
 router.post("/login", users.doLogin);
 
-router.get("/user", users.user);
+router.get('/logout', secure.requireLogin, users.logout)
 
-router.get("/messages", messages.create);
-router.post("messages", messages.doCreate);
+router.get("/user",  secure.requireLogin, users.user);
+router.post("/user/edit", secure.requireLogin, users.edit)
+
+router.get("/messages", secure.requireLogin, messages.create);
+router.post("/messages", secure.requireLogin, messages.doCreate);
 
 router.get("/aboutUs", common.aboutUS)
+router.get("/lobby", secure.requireLogin, common.lobby)
 
 
 module.exports = router;
