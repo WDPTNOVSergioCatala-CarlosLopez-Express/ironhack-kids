@@ -10,7 +10,8 @@ module.exports.session = session({
   saveUninitialized: false,
   cookie: {
     httpOnly: true,
-    secure: process.env.SESSION_SECURE
+    secure: process.env.SESSION_SECURE === 'true',
+    maxAge: 1000 * 60 * 60 * 24 * 14 // 14 days
   },
   store: MongoStore.create({
     mongoUrl: MONGODB_URI,
