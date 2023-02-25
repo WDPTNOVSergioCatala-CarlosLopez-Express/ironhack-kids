@@ -81,7 +81,26 @@ module.exports.logout = (req, res, next) => {
 };
 
 module.exports.edit = (req, res, next) => {
-  
+  const userId = req.user._id;
+  const { name, lastName, personalID, phoneNumber } = req.body;
+  console.log(req.body)
+
+  User.findByIdAndUpdate(userId, {
+    ...(name && { name }),
+    ...(lastName && { lastName }),
+    ...(personalID && { personalID }),
+    ...(phoneNumber && { phoneNumber })
+  }, { new: true })
+    .then(updatedUser => {
+      if (!updatedUser) {
+        return res.status(404).json({ error: 'User not found' });
+      }
+      res.redirect("/user");
+    })
+    .catch(error => {
+      console.error(error);
+      res.status(500).json({ error: 'Server error' });
+    });
 }
 
 

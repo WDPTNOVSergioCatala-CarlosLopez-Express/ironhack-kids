@@ -1,14 +1,5 @@
 <body style="font-family: 'Patrick Hand SC', cursive;">
-    {{!--<h1>Perfil</h1>
-    <form action="/user/edit" method="post">
-        <button class="btn btn-danger" type="submit">Editar</button>
-    </form>
-    <img src="{{currentUser.profilePic}}" alt="" style="width: 15%">
-    <h3>Nombre: {{currentUser.name}}</h3>
-    <h3>Apellidos: {{currentUser.lastName}}</h3>
-    <h3>Email: {{currentUser.email}}</h3>
-    <h3>Número de telefono: {{currentUser.phoneNumber}}</h3>
-    <h3>DNI: {{currentUser.personalID}}</h3>--}}
+    
     <style>
         body {
         background: rgb(234, 84, 85, 255)
@@ -48,13 +39,23 @@
         font-size: 11px
     }
 
-    .add-experience:hover {
+    .cambiar-contraseña:hover {
         background: rgb(234, 84, 85, 255);
         color: #fff;
         cursor: pointer;
         border: solid 1px rgb(234, 84, 85, 255)
     } 
     </style>
+
+    <script>
+        function confirmEdit(event) {
+            const ok = confirm('¿Éstas seguro de guardar los cambios?')
+
+            if (!ok) {
+                event.preventDefault()
+            }
+        }
+    </script>
 
     <div class="container rounded bg-white mt-5 mb-5">
     <div class="row">
@@ -66,35 +67,37 @@
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h4 class="text-right">Perfil</h4>
                 </div>
+                <form action="/user/edit" method="post" onsubmit="confirmEdit(event)">
                 <div class="row mt-2">
-                    <div class="col-md-6"><label class="labels">Nombre</label><input type="text" class="form-control" placeholder="{{currentUser.name}}" value=""></div>
-                    <div class="col-md-6"><label class="labels">Apellidos</label><input type="text" class="form-control" value="" placeholder="{{currentUser.lastName}}"></div>
+                    <div class="col-md-6"><label class="labels">Nombre</label><input type="text" class="form-control" placeholder="{{currentUser.name}}" name="name"></div>
+                    <div class="col-md-6"><label class="labels">Apellidos</label><input type="text" class="form-control" name="lastName" placeholder="{{currentUser.lastName}}"></div>
                 </div>
                 <div class="row mt-3">
-                    <div class="col-md-12"><label class="labels">Número de teléfono</label><input type="text" class="form-control" placeholder="{{#if currentUser.phoneNumber}}{{currentUser.phoneNumber}}{{else}}Introduce tu número de teléfono{{/if}} " value=""></div>
-                    <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control" placeholder="{{currentUser.email}}" value=""></div>
+                    <div class="col-md-12"><label class="labels">Número de teléfono</label><input type="number" class="form-control" placeholder="{{#if currentUser.phoneNumber}}{{currentUser.phoneNumber}}{{else}}Introduce tu número de teléfono{{/if}} " name="phoneNumber"></div>
+                    <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control" placeholder="{{currentUser.email}}" name="email"></div>
                 </div>
                 <div class="row mt-3">
-                    <div class="col-md-6"><label class="labels">DNI</label><input type="text" class="form-control" placeholder="{{currentUser.personalID}}" value=""></div>
-
+                    <div class="col-md-6"><label class="labels">DNI</label><input type="text" class="form-control" placeholder="{{currentUser.personalID}}" name="personalID"></div>
+                     <div class="col-md-6"><label class="labels">ROLE</label><input type="text" class="form-control" name="role" placeholder="{{currentUser.role}}" readonly></div>
                 </div>
-                <form action="/user/edit" method="post"></form>
-                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Guardar perfil</button></div>
+        
+                    <div class="mt-5 text-center"><button id="guardar-perfil-btn" class="btn btn-primary profile-button" type="submit">Guardar perfil</button></div>
                 </form>
-    
             </div>
         </div>
         <div class="col-md-4">
             <div class="p-3 py-5">
-                <div class="d-flex justify-content-between align-items-center experience"><span>Role: {{currentUser.role}}</span><span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;Experience</span></div><br>
-                <div class="col-md-12"><label class="labels">Experience in Designing</label><input type="text" class="form-control" placeholder="experience" value=""></div> <br>
-                <div class="col-md-12"><label class="labels">Additional Details</label><input type="text" class="form-control" placeholder="additional details" value=""></div>
+                <div class="d-flex justify-content-between align-items-center experience"><span>SEGURIDAD</span><span class="border px-3 p-1 cambiar-contraseña"><i class="fa fa-plus"></i>&nbsp;Cambiar contraseña</span></div><br>
+                <div class="col-md-12"><label class="labels">Contraseña actual</label><input type="text" class="form-control" placeholder="Contraseña actual" value=""></div> <br>
+                <div class="col-md-12"><label class="labels">Contraseña nueva</label><input type="text" class="form-control" placeholder="Contraseña nueva" value=""></div>
+                <div class="col-md-12"><label class="labels">Confirmar contraseña nueva</label><input type="text" class="form-control" placeholder="Confirmar contraseña nueva" value=""></div>
             </div>
         </div>
     </div>
 </div>
 </div>
 </div>
+
 
 
 </body>
