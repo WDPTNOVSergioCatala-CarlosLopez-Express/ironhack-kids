@@ -7,7 +7,7 @@
 
     .form-control:focus {
         box-shadow: none;
-        border-color: #BA68C8
+        border-color: rgb(234, 84, 85, 255)
     }
 
     .profile-button {
@@ -58,44 +58,44 @@
     </script>
 
     <div class="container rounded bg-white mt-5 mb-5">
-    <div class="row">
-        <div class="col-md-3 border-right">
-            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="{{currentUser.profilePic}}" alt="profile photo"><span class="font-weight-bold">{{currentUser.name}}</span><span class="text-black-50">{{currentUser.email}}</span><span> </span></div>
-        </div>
-        <div class="col-md-5 border-right">
-            <div class="p-3 py-5">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h4 class="text-right">Perfil</h4>
-                </div>
-                <form action="/user/edit" method="post" onsubmit="confirmEdit(event)">
-                <div class="row mt-2">
-                    <div class="col-md-6"><label class="labels">Nombre</label><input type="text" class="form-control" placeholder="{{currentUser.name}}" name="name"></div>
-                    <div class="col-md-6"><label class="labels">Apellidos</label><input type="text" class="form-control" name="lastName" placeholder="{{currentUser.lastName}}"></div>
-                </div>
-                <div class="row mt-3">
-                    <div class="col-md-12"><label class="labels">Número de teléfono</label><input type="number" class="form-control" placeholder="{{#if currentUser.phoneNumber}}{{currentUser.phoneNumber}}{{else}}Introduce tu número de teléfono{{/if}} " name="phoneNumber"></div>
-                    <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control" placeholder="{{currentUser.email}}" name="email"></div>
-                </div>
-                <div class="row mt-3">
-                    <div class="col-md-6"><label class="labels">DNI</label><input type="text" class="form-control" placeholder="{{currentUser.personalID}}" name="personalID"></div>
-                     <div class="col-md-6"><label class="labels">ROLE</label><input type="text" class="form-control" name="role" placeholder="{{currentUser.role}}" readonly></div>
-                </div>
-        
-                    <div class="mt-5 text-center"><button id="guardar-perfil-btn" class="btn btn-primary profile-button" type="submit">Guardar perfil</button></div>
-                </form>
+        <div class="row">
+            <div class="col-md-3 border-right">
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="{{currentUser.profilePic}}" alt="profile photo"><span class="font-weight-bold">{{currentUser.name}}</span><span class="text-black-50">{{currentUser.email}}</span><span> </span></div>
             </div>
-        </div>
-        <div class="col-md-4">
-            <div class="p-3 py-5">
-                <div class="d-flex justify-content-between align-items-center experience"><span>SEGURIDAD</span><span class="border px-3 p-1 cambiar-contraseña"><i class="fa fa-plus"></i>&nbsp;Cambiar contraseña</span></div><br>
-                <div class="col-md-12"><label class="labels">Contraseña actual</label><input type="text" class="form-control" placeholder="Contraseña actual" value=""></div> <br>
-                <div class="col-md-12"><label class="labels">Contraseña nueva</label><input type="text" class="form-control" placeholder="Contraseña nueva" value=""></div>
-                <div class="col-md-12"><label class="labels">Confirmar contraseña nueva</label><input type="text" class="form-control" placeholder="Confirmar contraseña nueva" value=""></div>
+            <div class="col-md-5 border-right">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-right">Perfil</h4>
+                    </div>
+                    <form action="/user/edit" method="post" onsubmit="confirmEdit(event)">
+                    <div class="row mt-2">
+                        <div class="col-md-6"><label class="labels">Nombre</label><input type="text" class="form-control" placeholder="{{currentUser.name}}" name="name"></div>
+                        <div class="col-md-6"><label class="labels">Apellidos</label><input type="text" class="form-control" name="lastName" placeholder="{{currentUser.lastName}}"></div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12"><label class="labels">Número de teléfono</label><input type="number" class="form-control" placeholder="{{#if currentUser.phoneNumber}}{{currentUser.phoneNumber}}{{else}}Introduce tu número de teléfono{{/if}} " name="phoneNumber"></div>
+                        <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control" placeholder="{{currentUser.email}}" name="email"></div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-6"><label class="labels">DNI</label><input type="text" class="form-control" placeholder="{{currentUser.personalID}}" name="personalID"></div>
+                        <div class="col-md-6"><label class="labels">ROLE</label><input type="text" class="form-control" name="role" placeholder="{{currentUser.role}}" readonly></div>
+                    </div>
+            
+                        <div class="mt-5 text-center"><button id="guardar-perfil-btn" class="btn btn-primary profile-button" type="submit">Guardar perfil</button></div>
+                    </form>
+                </div>
+            </div>
+                <div class="col-md-4">
+                    <div class="p-3 py-5">
+                        <div class="d-flex justify-content-between align-items-center experience"><span>SEGURIDAD</span><span class="border px-3 p-1 cambiar-contraseña"><i class="fa fa-plus"></i>&nbsp;Cambiar contraseña</span></div><br>
+                        <div class="col-md-12"><label class="labels">Contraseña actual</label><input type="text" class="form-control" placeholder="Contraseña actual" value=""></div> <br>
+                        <div class="col-md-12"><label class="labels">Contraseña nueva</label><input type="text" class="form-control" placeholder="Contraseña nueva" value=""></div>
+                        <div class="col-md-12"><label class="labels">Confirmar contraseña nueva</label><input type="text" class="form-control" placeholder="Confirmar contraseña nueva" value=""></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-</div>
 </div>
 
 

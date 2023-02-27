@@ -6,11 +6,17 @@ const schema = new mongoose.Schema({
     type: String,
     required: [true, "message is required"],
   },
-  user: { type: [{
-    type: Schema.Types.ObjectId,
-    ref: 'user'
-  }],
-  required: [true, "user is required"] },
-});
+  userFrom: { 
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'user',
+    required: [true, "user is required"] 
+  },
+  userTo: { 
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'user',
+    required: [true, "user is required"] 
+  }
+},
+{ timestamps: true });
 
 module.exports = mongoose.model("Message", schema);

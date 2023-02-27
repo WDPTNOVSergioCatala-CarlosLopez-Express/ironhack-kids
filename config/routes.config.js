@@ -22,7 +22,7 @@ router.get('/logout', secure.requireLogin, users.logout)
 router.get("/user",  secure.requireLogin, users.user);
 router.post("/user/edit", secure.requireLogin, users.edit)
 
-router.get("/messages", secure.requireLogin, messages.create);
+router.get("/messages", secure.requireLogin, messages.list);
 router.post("/messages", secure.requireLogin, messages.doCreate);
 
 router.get("/aboutUs", common.aboutUS)
