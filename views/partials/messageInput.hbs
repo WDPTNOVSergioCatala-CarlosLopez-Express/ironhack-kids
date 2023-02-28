@@ -1,25 +1,31 @@
-<body style="font-family: 'Patrick Hand SC' cursive fixed-bottom">
-    </div>
+<body style="font-family: 'Patrick Hand SC' cursive">
         <form action="/message/new" method="POST" class="form-block">
             <div class="row">
                 <div class="col-xs-12 col-sm-6">
                     <div class="form-group fl_icon">
-                        <div class="icon"><i class="fa fa-user"></i></div>
-                        <input class="form-input" type="text" placeholder="Your name">
+                        <div class="icon"><i class="fa fa-user"></i>
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" aria-label="Text input with dropdown button">
+                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">Separated link</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-6 fl_icon">
-                    <div class="form-group fl_icon">
-                        <div class="icon"><i class="fa fa-envelope-o"></i></div>
-                        <input class="form-input" type="text" placeholder="Your email">
-                    </div>
-                </div>
+                
                 <div class="col-xs-12">									
                     <div class="form-group">
                         <textarea class="form-input" required="" placeholder="Your text"></textarea>
                     </div>
                 </div>
             </div>
+            <button type="submit" class="btn btn-primary mx-auto btn-sm mt-1 mb-4">Submit</button>
         </form>
-    <button type="submit" class="btn btn-primary mx-auto btn-sm mt-1 mb-4">Submit</button>
+    
 </body>

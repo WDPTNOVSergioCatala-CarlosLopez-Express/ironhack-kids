@@ -2,6 +2,7 @@ const Message = require("../models/message.model");
 const mongoose = require("mongoose")
 
 module.exports.list = (req, res, next) => {
+    Message.find()
     res.render("messages", );
 };
 

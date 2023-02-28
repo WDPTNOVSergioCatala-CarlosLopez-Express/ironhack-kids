@@ -52,7 +52,12 @@ module.exports.doLogin = (req, res, next) => {
           .then((ok) => {
             if (ok) {
               req.session.userId = user.id;
-              res.redirect("/lobby");
+              if(user.role === "teacher"){
+                res.redirect("/lobby");
+              } else {
+                res.redirect("/classroom");
+              }
+              
             } else {
               const errors = {password: "Incorrect password"}
               res.render("users/login", { errors, user: req.body })

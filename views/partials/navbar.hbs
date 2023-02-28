@@ -41,7 +41,12 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="/user" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{currentUser.name}} {{currentUser.lastName}}</a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            {{#ifCond currentUser.role "teacher" }}
                             <a class="dropdown-item" href="/lobby">Lobby</a>
+                            <a class="dropdown-item" href="/gestion">Gestión</a>
+                            {{else}}
+                            <a class="dropdown-item" href="/classroom">Classroom</a>
+                            {{/ifCond}}
                             <a class="dropdown-item" href="/user">Tu perfil</a>
                             <a class="dropdown-item" href="/logout">Cerrar sesión</a>
                         </div>

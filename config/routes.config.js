@@ -26,7 +26,9 @@ router.get("/messages", secure.requireLogin, messages.list);
 router.post("/messages", secure.requireLogin, messages.doCreate);
 
 router.get("/aboutUs", common.aboutUS)
-router.get("/lobby", secure.requireLogin, common.lobby)
+router.get("/lobby", secure.requireLogin, secure.requireTeacher, common.lobby)
+router.get("/classroom", secure.requireLogin, secure.requireStudent, common.classroom)
 
+router.get("/gestion", secure.requireLogin, secure.requireTeacher, common.gestion)
 
 module.exports = router;

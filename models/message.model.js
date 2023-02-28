@@ -20,3 +20,18 @@ const schema = new mongoose.Schema({
 { timestamps: true });
 
 module.exports = mongoose.model("Message", schema);
+
+/*
+
+GET /users/:îd/chat
+
+chat = (req, res, next) => {
+  Message.find({
+    $or: [
+      { userFrom: req.params.id, userTo: req.user.id},
+      { userFrom: req.user.id, userTo: req.params.id }
+    ]
+  })
+}
+
+*/

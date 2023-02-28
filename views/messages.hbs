@@ -1,5 +1,5 @@
-<body style="font-family: 'Patrick Hand SC', cursive;">
-    <style>
+<head>
+<style>
         body{
             margin-top:20px;
             background-color:rgb(234, 84, 85, 255);
@@ -127,11 +127,14 @@
         }
     
     </style>
+    </head>
+<body style="font-family: 'Patrick Hand SC', cursive;">
+    
 
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+        
     <div class="container rounded bg-white mt-5 mb-5">
         <div class="be-comment-block">
-            <h1 class="comments-title">Comments (3)</h1>
+            <h1 class="comments-title">Comments</h1>
             {{!--{{#each messages as |message|}} --}}
             <div class="be-comment">
                 <div class="be-img-comment">	
@@ -142,7 +145,7 @@
                 <div class="be-comment-content">
                     
                         <span class="be-comment-name">
-                            <a href="blog-detail-2.html">Ravi Sah{{!-- {{message.userFrom.name}} --}}</a>
+                            <a href="blog-detail-2.html">Example{{!-- {{message.userFrom.name}} --}}</a>
                             </span>
                         <span class="be-comment-time">
                             <i class="fa fa-clock-o"></i>
@@ -163,7 +166,7 @@
                 
         </div>
     </div>
-    <main class="container rounded bg-white mt-5 mb-5 sticky-bottom">
+    <div class="container rounded bg-white mt-5 mb-5">
       {{>messageInput}}
-    </main>
+    </div>
 </body>

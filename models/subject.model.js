@@ -1,5 +1,6 @@
-const Schema = mongoose.Schema;
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+
 
 const schema = new mongoose.Schema({
   name: {
@@ -7,15 +8,17 @@ const schema = new mongoose.Schema({
     required: [true, "name is required"],
   },
   teacher: {
-    type: String,
-    required: [true, "teacher is required"],
+    type: [{
+      type: Schema.Types.ObjectId,
+      ref: 'user'
+    }],
   },
   students: {
     type: [{
       type: Schema.Types.ObjectId,
       ref: 'user'
     }],
-    validate: [arrayLimit, `${PATH} exceeds the limit of 40`]
+    validate: [arrayLimit, `Subject exceeds the limit of 40 students`]
   },
 });
 
