@@ -134,39 +134,45 @@
         
     <div class="container rounded bg-white mt-5 mb-5">
         <div class="be-comment-block">
-            <h1 class="comments-title">Comments</h1>
-            {{!--{{#each messages as |message|}} --}}
+            <h1 class="comments-title">Mensajes</h1>
+            {{#each messages as |message|}}
             <div class="be-comment">
                 <div class="be-img-comment">	
                     <a href="blog-detail-2.html">
-                        <img src="{{!--{{message.userFrom.profilePic}}--}}" alt="" class="be-ava-comment">
+                        <img src="{{message.userFrom.profilePic}}" alt="" class="be-ava-comment">
                     </a>
                 </div>
                 <div class="be-comment-content">
                     
                         <span class="be-comment-name">
-                            <a href="blog-detail-2.html">Example{{!-- {{message.userFrom.name}} --}}</a>
+                            <a href="blog-detail-2.html">{{message.userFrom.name}}</a>
                             </span>
                         <span class="be-comment-time">
                             <i class="fa fa-clock-o"></i>
-                            {{!-- {{date message.createdAt}} --}}
-                            May 27, 2015 at 3:14am
+                            {{message.createdAt}}
                         </span>
 
                     <p class="be-comment-text">
-                        Pellentesque gravida tristique ultrices. 
-                        Sed blandit varius mauris, vel volutpat urna hendrerit id. 
-                        Curabitur rutrum dolor gravida turpis tristique efficitur.
-                        {{!-- {{message.message}} --}}
+                        {{message.message}}
                     </p>
                 </div>
             </div>
-            {{!--{{/each}}--}}
+            {{/each}}
             
                 
         </div>
     </div>
     <div class="container rounded bg-white mt-5 mb-5">
-      {{>messageInput}}
+      <form action="/messages/{{userTo}}/chat" method="POST" class="form-block font-family: 'Patrick Hand SC' cursive">
+      <div class="col-xs-12">
+      <div class="form-group">
+        <label name="message" id="message" type="text" class="label"></label>
+        <input class="form-input" value="{{message.message}}" name="message" type="text" ></input>
+        <br>
+      </div>
+    </div>
+  </div>
+  <button type="submit" id="submit" class="btn btn-primary mx-auto btn-sm mt-1 mb-4">Enviar</button>
+</form>
     </div>
 </body>

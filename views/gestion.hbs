@@ -19,10 +19,15 @@
   </div>
 {{/if}}
 
-<form action="/users" method="POST" enctype="multipart/form-data">
+<form action="/users" method="POST">
   <div class="mb-3">
-    <label for="name" class="form-label">Nombre</label>
-    <input type="text" value="{{user.name}}" name="name" class="form-control {{#if errors.name}}is-invalid{{/if}}" id="name">
+    <label for="subject" class="form-label">Selecciona asignatura</label>
+    <select class="form-select" aria-label="Default select example">
+      <option value="" disabled selected hidden>Asignaturas</option>
+      <option value="1">Lengua</option>
+      <option value="2">Matemáticas</option>
+      <option value="3">Inglés</option>
+    </select>
     {{#if errors.name}}
       <div class="invalid-feedback">
         {{errors.name.message}}
@@ -31,61 +36,20 @@
   </div>
   
   <div class="mb-3">
-    <label for="lastName" class="form-label">Apellido</label>
-    <input type="text" value="{{user.lastName}}" name="lastName" class="form-control {{#if errors.lastName}}is-invalid{{/if}}" id="lastName">
+    <label for="student" class="form-label">Selecciona alumn@</label>
+    <select class="form-select" aria-label="Default select example">
+      <option value="" disabled selected hidden>Alumn@</option>
+      <option value="1">Opción 1</option>
+      <option value="2">Opción 2</option>
+      <option value="3">Opción 3</option>
+    </select>
     {{#if errors.lastName}}
       <div class="invalid-feedback">
         {{errors.lastName.message}}
       </div>
     {{/if}}
   </div>
-
-  <div class="mb-3">
-    <label for="email" class="form-label">Email</label>
-    <input type="email" value="{{user.email}}" name="email" class="form-control {{#if errors.email}}is-invalid{{/if}}" id="email">
-    {{#if errors.email}}
-      <div class="invalid-feedback">
-        {{errors.email.message}}
-      </div>
-    {{/if}}
-  </div>
-
-  <div class="mb-3">
-    <label for="password" class="form-label">Contraseña</label>
-    <input type="password" value="{{user.password}}" name="password" class="form-control {{#if errors.password}}is-invalid{{/if}}" id="password">
-    {{#if errors.password}}
-      <div class="invalid-feedback">
-        {{errors.password.message}}
-      </div>
-    {{/if}}
-  </div>
-
-  <div class="mb-3">
-    <label for="code" class="form-label">Clave de registro</label>
-    <input type="text" value="{{code}}" name="code" class="form-control {{#if errors.code}}is-invalid{{/if}}" id="code">
-    {{#if errors.code}}
-      <div class="invalid-feedback">
-        {{errors.code.message}}
-      </div>
-    {{/if}}
-  </div>
-
-  <div class="mb-3">
-    <label for="personalID" class="form-label">Personal ID</label>
-    <input type="text" value="{{personalID}}" name="personalID" class="form-control {{#if errors.personalID}}is-invalid{{/if}}" id="personalID">
-    {{#if errors.personalID}}
-      <div class="invalid-feedback">
-        {{errors.personalID.message}}
-      </div>
-    {{/if}}
-  </div>
-
-  <div class="input-group mb-3">
-    <label class="input-group-text" for="profilePic"><i class="fa fa-picture-o"></i></label>
-    <input type="file" name="profilePic" class="form-control {{#if errors.profilePic}}is-invalid{{/if}}" id="profilePic">
-  </div>
-
   
-  <button type="submit" class="btn btn-primary">Crear</button>
+  <button type="submit" class="btn btn-primary">Asignar</button>
 </form>  
 </body>

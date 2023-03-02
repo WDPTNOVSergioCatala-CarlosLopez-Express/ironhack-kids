@@ -6,23 +6,23 @@ const logger = require("morgan");
 require("./config/db.config");
 
 const app = express();
-app.use(express.urlencoded({extended: true}))
+app.use(express.urlencoded({ extended: true }));
 
 require("./config/hbs.config");
-const { session, loadSessionUser } = require('./config/session.config')
+const { session, loadSessionUser } = require("./config/session.config");
 
 app.set("view engine", "hbs");
 app.set("views", `${__dirname}/views`);
 
-app.use(logger("dev"))
+app.use(logger("dev"));
 
 app.use(session);
 app.use(loadSessionUser);
 
 app.use((req, res, next) => {
-    res.locals.currentPath = req.path;
-    next();
-  });
+  res.locals.currentPath = req.path;
+  next();
+});
 
 const routes = require("./config/routes.config");
 app.use("/", routes);

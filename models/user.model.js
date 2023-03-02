@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const bcrypt = require("bcrypt")
+const bcrypt = require("bcrypt");
 
 const schema = new mongoose.Schema({
   name: {
@@ -31,7 +31,7 @@ const schema = new mongoose.Schema({
   },
   profilePic: {
     type: String,
-    required : true
+    required: true,
   },
   phoneNumber: {
     type: Number,
@@ -45,18 +45,15 @@ const schema = new mongoose.Schema({
 schema.pre("save", function (next) {
   if (this.isModified("password")) {
     bcrypt
-    .hash(this.password, 10)
-    .then((encryptedPassword) => {
-      this.password = encryptedPassword;
-      next();
-    })
-    .catch(next)
-  }else {
+      .hash(this.password, 10)
+      .then((encryptedPassword) => {
+        this.password = encryptedPassword;
+        next();
+      })
+      .catch(next);
+  } else {
     next();
   }
 });
 
 module.exports = mongoose.model("User", schema);
-
-
-

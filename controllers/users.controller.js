@@ -52,21 +52,20 @@ module.exports.doLogin = (req, res, next) => {
           .then((ok) => {
             if (ok) {
               req.session.userId = user.id;
-              if(user.role === "teacher"){
+              if (user.role === "teacher") {
                 res.redirect("/lobby");
               } else {
                 res.redirect("/classroom");
               }
-              
             } else {
-              const errors = {password: "Incorrect password"}
-              res.render("users/login", { errors, user: req.body })
+              const errors = { password: "Incorrect password" };
+              res.render("users/login", { errors, user: req.body });
             }
           })
           .catch(next);
       } else {
-        const errors = {email: "This email is not registered"};
-        res.render("users/login", { errors, user: req.body })
+        const errors = { email: "This email is not registered" };
+        res.render("users/login", { errors, user: req.body });
       }
     })
     .catch(next);
@@ -77,38 +76,37 @@ module.exports.user = (req, res, next) => {
 };
 
 module.exports.logout = (req, res, next) => {
-  req.session.destroy(function(err) {
+  req.session.destroy(function (err) {
     if (err) {
       console.log(err);
     }
-    res.redirect('/');
+    res.redirect("/");
   });
 };
 
 module.exports.edit = (req, res, next) => {
   const userId = req.user._id;
   const { name, lastName, personalID, phoneNumber } = req.body;
-  console.log(req.body)
+  console.log(req.body);
 
-  User.findByIdAndUpdate(userId, {
-    ...(name && { name }),
-    ...(lastName && { lastName }),
-    ...(personalID && { personalID }),
-    ...(phoneNumber && { phoneNumber })
-  }, { new: true })
-    .then(updatedUser => {
+  User.findByIdAndUpdate(
+    userId,
+    {
+      ...(name && { name }),
+      ...(lastName && { lastName }),
+      ...(personalID && { personalID }),
+      ...(phoneNumber && { phoneNumber }),
+    },
+    { new: true }
+  )
+    .then((updatedUser) => {
       if (!updatedUser) {
-        return res.status(404).json({ error: 'User not found' });
+        return res.status(404).json({ error: "User not found" });
       }
       res.redirect("/user");
     })
-    .catch(error => {
+    .catch((error) => {
       console.error(error);
-      res.status(500).json({ error: 'Server error' });
+      res.status(500).json({ error: "Server error" });
     });
-}
-
-
-
-
-
+};

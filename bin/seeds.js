@@ -1,31 +1,17 @@
+// Iteration #1
+const mongoose = require('mongoose')
+require('dotenv').config();
 require("../config/db.config");
 
+
 const Subject = require("../models/subject.model");
+const subjects = [
+  { name: "Matemáticas", teacher: ["63f0caa5a0ce175d0c63d5a6"], students: ["63f0cad8a0ce175d0c63d5a9"] },
+  { name: "Lengua", teacher: [], students: [] },
+  { name: "Ingles", teacher: [], students: [] },
+];
 
-Subjects.deleteMany().then(() => {
-    Subjects.push({
-      name: `Matematicas`,
-      teacher: "",
-      students: []
-    });
-    Subjects.push({
-        name: `Lengua`,
-        teacher: "",
-        students: []
-      });
-      Subjects.push({
-        name: `Ingles`,
-        teacher: "",
-        students: []
-      });
-      Subjects.push({
-        name: `Educacion fisica`,
-        teacher: "",
-        students: []
-      });
-  
-
-  Subjects.create(subjects).then(() => {
-    console.log("subjects created");
-  });
+Subject.create(subjects).then(() => {
+  console.log("Subject Created");
 });
+
