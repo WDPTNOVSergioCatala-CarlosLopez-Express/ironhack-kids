@@ -12,6 +12,6 @@ const subjects = [
 ];
 
 Subject.create(subjects).then(() => {
-  console.log("Subject Created");
+  console.log("Subjects Created");
 });
 

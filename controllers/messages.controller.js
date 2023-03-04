@@ -7,7 +7,7 @@ module.exports.list = (req, res, next) => {
       { userFrom: req.user._id, userTo: req.params.id },
       { userTo: req.user._id, userFrom: req.params.id },
     ],
-  })
+  }).sort({ createdAt: -1 })
     .populate("userFrom")
     .populate("userTo")
     .then((messages) => {

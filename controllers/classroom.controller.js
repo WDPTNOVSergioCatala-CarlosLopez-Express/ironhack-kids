@@ -1,25 +1,21 @@
-const Subject = require("../models/subject.model");
-const User = require("../models/user.model");
-const mongoose = require("mongoose");
+const Subject = require('../models/subject.model');
+const User = require('../models/user.model');
 
-module.exports.classroom = (req, res, next) => {
-    Subject.find({ students: mongoose.Types.ObjectId(req.user._id) })
+module.exports.classroom = (req, res) => {
+  const studentId = res.locals.currentUser._id;
+
+  Subject.find({ students: studentId })
     .populate({
       path: 'teacher',
-      model: User // Registra el modelo 'user' en la llamada a populate()
+      select: 'name email profilePic lastName',
+      model: 'User',
     })
-    .populate('subject') // Agrega la población de la propiedad 'subject'
+    .exec()
     .then((subjects) => {
-      const teachers = subjects.reduce((acc, subject) => {
-        subject.teacher.forEach((teacher) => {
-          acc.push({
-            teacher,
-            subject: subject.subject // Agrega la propiedad 'subject' al objeto
-          });
-        });
-        return acc;
-      }, []);
-      res.render("classroom", { teachers});
+      const teachers = subjects.map((subject) => subject.teacher);
+      res.render('classroom', { teachers, subjects });
     })
-    .catch(next);
+    .catch((error) => {
+      res.render('error');
+    });
 };
