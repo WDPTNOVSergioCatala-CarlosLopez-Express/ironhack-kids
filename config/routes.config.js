@@ -7,6 +7,9 @@ const common = require("../controllers/common.controller");
 const messages = require("../controllers/messages.controller");
 const lobby = require("../controllers/lobby.controller");
 const classroom = require("../controllers/classroom.controller")
+const gestion = require("../controllers/gestion.controller")
+const gradesStudent = require("../controllers/gradesStudent.controller")
+const gradesTeacher = require("../controllers/gradesTeacher.controller")
 
 const router = express.Router();
 
@@ -28,19 +31,18 @@ router.get("/messages/:id/chat", secure.requireLogin, messages.list);
 router.post("/messages/:id/chat", secure.requireLogin, messages.doCreate);
 
 router.get("/aboutUs", common.aboutUS);
-router.get("/lobby", secure.requireLogin, secure.requireTeacher, lobby.lobby);
-router.get(
-  "/classroom",
-  secure.requireLogin,
-  secure.requireStudent,
-  classroom.classroom
-);
 
-router.get(
-  "/gestion",
-  secure.requireLogin,
-  secure.requireTeacher,
-  common.gestion
-);
+router.get("/lobby", secure.requireLogin, secure.requireTeacher, lobby.lobby);
+
+router.get("/classroom", secure.requireLogin, secure.requireStudent, classroom.classroom);
+
+router.get("/gestion", secure.requireLogin, secure.requireTeacher, gestion.gestion);
+router.post("/gestion", secure.requireLogin, secure.requireTeacher, gestion.addStudent);
+router.post("/gestion/remove/:subjectId/:studentId", secure.requireLogin, secure.requireTeacher, gestion.removeStudent);
+router.post("/gestion/remove", secure.requireLogin, secure.requireTeacher, gestion.removeStudent);
+
+
+router.get("/gradesStudent", secure.requireLogin, secure.requireStudent, gradesStudent.gradesStudent);
+router.get("/gradesTeacher", secure.requireLogin, secure.requireTeacher, gradesTeacher.gradesTeacher);
 
 module.exports = router;

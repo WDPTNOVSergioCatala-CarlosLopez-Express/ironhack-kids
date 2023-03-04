@@ -3,7 +3,8 @@ const Schema = mongoose.Schema;
 
 const schema = new Schema({
   subject: {
-    type: String,
+    type: Schema.Types.ObjectId,
+    ref: "Subject",
     required: [true, "subject is required"],
   },
   user: {

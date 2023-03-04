@@ -185,25 +185,31 @@
                         <table class="table user-list">
                             <thead>
                                 <tr>
-                                    <th><span>Profesor</span></th>
-                                    <th><span>Asignatura</span></th>
+                                    <th><span>User</span></th>
+                                    <th><span>Calificaciones</span></th>
+                                    <th><span>Media Calificación</span></th>
                                     <th>&nbsp;</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {{#each subjects as |subject|}}
+                                {{#each students as |student|}}
+                                
                                 <tr>
                                     <td>
-                                        <img src="{{subject.teacher.0.profilePic}}" alt="">
-                                        <a href="/messages/{{subject.teacher.0._id}}/chat" class="user-link">{{subject.teacher.0.name}} {{subject.teacher.0.lastName}}</a>
-                                        <span class="user-subhead">{{subject.teacher.0.email}}</span>
+                                        <img class="rounded-circle profilePic" src={{student.profilePic}} alt="">
+                                        <a href="/messages/{{student._id}}/chat" class="user-link">{{student.name}} {{student.lastName}}</a>
+                                   
+                                            <span class="user-subhead">{{student.subjectName}}</span>
                                     </td>
-                                    
                                     <td>
-                                        <h6>{{subject.name}}</h6>
+                                     <td>
+                                        <a href="#">{{student.email}}</a>
                                     </td>
-                                    <td style="width: 10%;">
-                                        <a href="/messages/{{subject.teacher.0._id}}/chat" class="table-link">
+                                    <td>
+                                        <a href="#">{{student.email}}</a>
+                                    </td>
+                                    <td style="width: 20%;">
+                                        <a href="/messages/{{student._id}}/chat" class="table-link">
                                             <span class="fa-stack">
                                                 <i class="fa fa-square fa-stack-2x"></i>
                                                 <i class="fa fa-comments-o fa-stack-1x fa-inverse"></i>
@@ -213,6 +219,12 @@
                                             <span class="fa-stack">
                                                 <i class="fa fa-square fa-stack-2x"></i>
                                                 <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                        </a>
+                                        <a href="#" class="table-link danger">
+                                            <span class="fa-stack">
+                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
                                             </span>
                                         </a>
                                     </td>
@@ -234,3 +246,5 @@
             </div>
         </div>
     </div>
+
+</body>

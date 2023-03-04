@@ -22,3 +22,8 @@ hbs.registerHelper("date", (date) => {
 
   return `${Math.round(minDiff)}m ago`;
 });
+
+hbs.registerHelper("lookup", function (obj, key) {
+  return obj[key];
+});
+

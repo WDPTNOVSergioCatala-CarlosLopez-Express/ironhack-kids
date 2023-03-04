@@ -185,8 +185,9 @@
                         <table class="table user-list">
                             <thead>
                                 <tr>
-                                    <th><span>Profesor</span></th>
                                     <th><span>Asignatura</span></th>
+                                    <th><span>Calificaciones</span></th>
+                                    <th><span>Media Calificación</span></th>
                                     <th>&nbsp;</th>
                                 </tr>
                             </thead>
@@ -194,25 +195,19 @@
                                 {{#each subjects as |subject|}}
                                 <tr>
                                     <td>
-                                        <img src="{{subject.teacher.0.profilePic}}" alt="">
-                                        <a href="/messages/{{subject.teacher.0._id}}/chat" class="user-link">{{subject.teacher.0.name}} {{subject.teacher.0.lastName}}</a>
-                                        <span class="user-subhead">{{subject.teacher.0.email}}</span>
+                                        <h6>{{subject.name}}</h6>
                                     </td>
-                                    
                                     <td>
                                         <h6>{{subject.name}}</h6>
                                     </td>
-                                    <td style="width: 10%;">
+                                     <td>
+                                        <h6>{{subject.name}}</h6>
+                                    </td>
+                                    <td style="width: 5%;">
                                         <a href="/messages/{{subject.teacher.0._id}}/chat" class="table-link">
                                             <span class="fa-stack">
                                                 <i class="fa fa-square fa-stack-2x"></i>
                                                 <i class="fa fa-comments-o fa-stack-1x fa-inverse"></i>
-                                            </span>
-                                        </a>
-                                        <a href="#" class="table-link">
-                                            <span class="fa-stack">
-                                                <i class="fa fa-square fa-stack-2x"></i>
-                                                <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
                                             </span>
                                         </a>
                                     </td>

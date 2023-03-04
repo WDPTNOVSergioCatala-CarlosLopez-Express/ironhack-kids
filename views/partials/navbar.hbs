@@ -21,7 +21,7 @@
         <a class="nav-link" href="/">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/aboutUs">About Us</a>
+        <a class="nav-link" href="/aboutUs">Sobre nosotros</a>
       </li>
     </ul>
     <ul class="navbar-nav ml-auto">
@@ -47,8 +47,10 @@
             {{#ifCond currentUser.role "teacher"}}
               <a class="dropdown-item" href="/lobby">Lobby</a>
               <a class="dropdown-item" href="/gestion">Gestión</a>
+              <a class="dropdown-item" href="/gradesTeacher">Calificaciones</a>
             {{else}}
               <a class="dropdown-item" href="/classroom">Classroom</a>
+              <a class="dropdown-item" href="/gradesStudent">Calificaciones</a>
             {{/ifCond}}
             <a class="dropdown-item" href="/user">Tu perfil</a>
             <a class="dropdown-item" href="/logout">Cerrar sesión</a>
