@@ -13,6 +13,8 @@ const schema = new Schema({
   },
   value: {
     type: Number,
+    min: [0],
+    max: [10],
   },
 });
 

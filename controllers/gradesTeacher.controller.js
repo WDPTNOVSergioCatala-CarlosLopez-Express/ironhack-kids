@@ -13,7 +13,6 @@ module.exports.gradesTeacher = (req, res, next) => {
         acc.push(...subject.students);
         return acc;
       }, []);
-      console.log(students)
       res.render("gradesTeacher", { students });
     })
     .catch(next);

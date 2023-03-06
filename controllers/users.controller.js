@@ -1,6 +1,7 @@
 const User = require("../models/user.model");
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
+const alert = require('alert')
 
 module.exports.create = (req, res) => {
   res.render("users/newUser");
@@ -76,12 +77,9 @@ module.exports.user = (req, res, next) => {
 };
 
 module.exports.logout = (req, res, next) => {
-  req.session.destroy(function (err) {
-    if (err) {
-      console.log(err);
-    }
-    res.redirect("/");
-  });
+  req.session.destroy();
+  req.session = null;
+  res.redirect("/login");
 };
 
 module.exports.edit = (req, res, next) => {
@@ -109,4 +107,36 @@ module.exports.edit = (req, res, next) => {
       console.error(error);
       res.status(500).json({ error: "Server error" });
     });
+};
+
+module.exports.passwordUpdate = (req, res, next) => {
+  User.findOne({ email: res.locals.currentUser.email })
+    .then((user) => {
+      if (user) {
+        bcrypt
+          .compare(req.body.actualPassword, user.password)
+          .then((ok) => {
+            if (ok) {
+              if (req.body.confirmPassword === req.body.newPassword) {
+                req.user.save()
+                if (!password) {
+                  delete req.body.newPassword
+                }
+                const user = Object.assign(req.user, req.body.newPassword)
+                user.save()
+                .then(user => res.redirect('/user'))
+                .catch(next)
+              } else {
+                alert("Las contraseñas no coinciden");
+              }
+            } else {
+              alert("Contraseña actual incorrecta");
+            }
+          })
+          .catch(next);
+      } else {
+        next
+      }
+    })
+    .catch(next);
 };

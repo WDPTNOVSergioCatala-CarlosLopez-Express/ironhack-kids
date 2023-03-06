@@ -26,6 +26,7 @@ router.get("/logout", secure.requireLogin, users.logout);
 
 router.get("/user", secure.requireLogin, users.user);
 router.post("/user/edit", secure.requireLogin, users.edit);
+router.post("/passupdate", secure.requireLogin, users.passwordUpdate)
 
 router.get("/messages/:id/chat", secure.requireLogin, messages.list);
 router.post("/messages/:id/chat", secure.requireLogin, messages.doCreate);
